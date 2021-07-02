@@ -1,0 +1,75 @@
+{% extends 'portfolio/base.html' %}
+
+
+{% block content %}
+
+ 
+
+{% load static  %}
+<style>
+    div.a {
+    text-align: center;
+}
+    div.b {
+        text-align: left; color: mediumpurple;
+
+    }
+    div.media_container{ display:flex;
+
+    }
+    div.column { float:left; padding: 5px;
+
+    }
+    div.row::after {content: "";clear: both; display: table;
+
+    }
+    body {background-color: aqua;
+
+    }
+    h1 {text-align:center; color:darkgoldenrod;
+
+    }
+</style>
+<h1>This is just a test</h1>
+<div class='b'>
+    <img src="{%  static 'portfolio/glo.jpg' %}" height="30" width="30"><b>Shawen</b>
+</div>
+
+<a href="{% url 'blog:all_blogs'  %}">Blog</a> 
+<br>
+
+<a href = "{%  static 'portfolio/resume.pdf' %}" target="_blank" >Document</a>
+
+<br>
+<body>
+<div class='a'>
+    <img src="{% static 'portfolio/glo.jpg' %}"  style="width:250px;height:250px;">  
+</div>
+
+<div class='row'>
+    {% for project in projects %}
+
+    <div class='column'>
+        {{  project.title }} <br>
+
+        {% if project.url %}
+            <a href="{{ project.url }}"><img src="{{  project.image.url }}" alt="{{ project.title }}"   height=200 width=200 ></a> <br>
+            
+        {% endif %}
+        {{  project.description }}
+    </div>
+    {%  endfor %}
+</div>
+
+
+
+
+
+
+</body>
+{%  endblock %}
+   
+
+
+
+
